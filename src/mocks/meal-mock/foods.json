@@ -1,0 +1,16 @@
+[
+  {
+    "mealId": 1,
+    "nane": "Pechuga",
+    "calories": 285,
+    "portion": "150gr",
+    "createdAt": "2023-11-18T12:54:46.343Z"
+  },
+  {
+    "mealId": 2,
+    "nane": "Carne de res",
+    "calories": 200,
+    "portion": "100gr",
+    "createdAt": "2023-11-18T12:54:46.343Z"
+  }
+]
