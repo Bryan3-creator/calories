@@ -1,10 +1,12 @@
 import { type ReactNode } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { HomeView } from './src/views'
+import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar'
 
 export const App = (): ReactNode => {
   return (
     <View style={styles.container}>
+      <ExpoStatusBar style="light" />
       <HomeView />
     </View>
   )

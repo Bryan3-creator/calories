@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { Header } from '../../components'
-import { Calories, ProgressTodayFood } from './components'
+import { Calories, ProgressTodayFood, Foods } from './components'
 
 export const HomeView = (): JSX.Element => {
   return (
@@ -10,6 +10,7 @@ export const HomeView = (): JSX.Element => {
       <Header />
       <Calories />
       <ProgressTodayFood />
+      <Foods />
     </View>
   )
 }
