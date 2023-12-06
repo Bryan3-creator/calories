@@ -3,12 +3,25 @@ import { Button } from '@rneui/themed'
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { type MealModel } from '../../models'
+import { type MealId } from '../../types'
 
 interface Props {
   meal: MealModel
+  iconName: string
+  onSetFood?: (food: MealModel) => Promise<void>
+  onDeleteFood?: (mealId: MealId) => void
 }
 
-export const Meal = ({ meal }: Props): JSX.Element => {
+export const Meal = ({
+  meal,
+  iconName,
+  onSetFood,
+  onDeleteFood,
+}: Props): JSX.Element => {
+  const handlePress = (): void => {
+    onSetFood?.(meal).catch((error) => error)
+    onDeleteFood?.(meal.mealId)
+  }
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -16,7 +29,11 @@ export const Meal = ({ meal }: Props): JSX.Element => {
         <Text style={styles.portion}>{meal.portion}</Text>
       </View>
       <View style={styles.rightContainer}>
-        <Button icon={<Icon name="close" />} color="transparent" />
+        <Button
+          icon={<Icon name={iconName} />}
+          color="transparent"
+          onPress={handlePress}
+        />
         <Text style={styles.calories}>{meal.calories} Cal</Text>
       </View>
     </View>

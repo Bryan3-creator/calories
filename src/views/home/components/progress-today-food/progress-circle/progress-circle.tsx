@@ -1,11 +1,15 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import CircularProgress from 'react-native-circular-progress-indicator'
+import { usehomeContext } from '../../../hooks'
 
 export const ProgressCircle = (): JSX.Element => {
+  const {
+    todayStatistics: { percentage },
+  } = usehomeContext()
   return (
     <View style={styles.container}>
-      <CircularProgress value={10} valueSuffix="%" />
+      <CircularProgress value={percentage} valueSuffix="%" />
     </View>
   )
 }

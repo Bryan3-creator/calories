@@ -1,8 +1,15 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { Button } from '@rneui/themed'
 import { Icon } from '@rneui/base'
+import { useNavigation } from '@react-navigation/native'
 
 export const Calories = (): JSX.Element => {
+  const { navigate } = useNavigation()
+
+  const handlePressNavigation = (): void => {
+    navigate('AddFood')
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -13,6 +20,7 @@ export const Calories = (): JSX.Element => {
           icon={<Icon name="add-circle-outline" color="#FFF" />}
           radius="lg"
           color="#4ECB71"
+          onPress={handlePressNavigation}
         />
       </View>
     </View>

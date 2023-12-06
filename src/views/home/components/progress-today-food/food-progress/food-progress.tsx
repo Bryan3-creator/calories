@@ -2,15 +2,17 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 import { MealInfo } from './meal-info'
+import { usehomeContext } from '../../../hooks'
 
 export const FoodProgress = (): JSX.Element => {
+  const { todayStatistics } = usehomeContext()
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Today</Text>
       <View style={styles.infoContainer}>
-        <MealInfo field="Total" value={2000} />
-        <MealInfo field="Consumed" value={485} />
-        <MealInfo field="Calories" value={1515} />
+        <MealInfo field="Total" value={todayStatistics.total} />
+        <MealInfo field="Consumed" value={todayStatistics.consumed} />
+        <MealInfo field="Remaining" value={todayStatistics.remaining} />
       </View>
     </View>
   )

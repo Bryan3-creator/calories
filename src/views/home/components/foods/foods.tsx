@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { type MealModel } from '../../../../models'
-import { getFoodsService } from '../../services'
 import { FoodsItems } from '../../../../components'
+import { usehomeContext } from '../../hooks'
 
 export const Foods = (): JSX.Element => {
-  const [foods, setFoods] = useState<MealModel[]>([])
-
-  const getFoods = async (): Promise<void> => {
-    try {
-      const foodResponse = await getFoodsService()
-      setFoods(foodResponse)
-    } catch (_) {}
-  }
-
-  useEffect(() => {
-    getFoods()
-      .then((res) => res)
-      .catch((error) => error)
-  }, [])
+  const { foods, onDeleteFood } = usehomeContext()
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Foods</Text>
-      <FoodsItems foods={foods} />
+      <FoodsItems foods={foods} iconName="close" onDeleteFood={onDeleteFood} />
     </View>
   )
 }
